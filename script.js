@@ -117,12 +117,14 @@ class SeesawSimulation {
     }
 
     calculateAndUpdate() {
-        // Calculate torques
+        // Calculate torques for both sides
+        // Torque = Weight × Distance from center
         let leftTorque = 0;
         let rightTorque = 0;
         let leftWeight = 0;
         let rightWeight = 0;
 
+        // Sum up torques and weights for each side
         this.objects.forEach(obj => {
             const torque = obj.weight * obj.distance;
             if (obj.side === 'left') {
@@ -134,17 +136,19 @@ class SeesawSimulation {
             }
         });
 
-        // Calculate tilt angle
+        // Calculate tilt angle based on torque difference
+        // Positive difference = tilts right, negative = tilts left
+        // Clamped to ±30 degrees maximum
         const torqueDifference = rightTorque - leftTorque;
         this.currentAngle = Math.max(-this.MAX_ANGLE, Math.min(this.MAX_ANGLE, 
             torqueDifference / this.TORQUE_SENSITIVITY));
 
-        // Update displays
+        // Update all display elements
         this.leftWeightDisplay.textContent = `${leftWeight.toFixed(1)} kg`;
         this.rightWeightDisplay.textContent = `${rightWeight.toFixed(1)} kg`;
         this.tiltAngleDisplay.textContent = `${this.currentAngle.toFixed(1)}°`;
 
-        // Apply rotation to plank
+        // Apply CSS rotation transform for smooth animation
         this.plank.style.transform = `rotate(${this.currentAngle}deg)`;
 
         // Update info display
