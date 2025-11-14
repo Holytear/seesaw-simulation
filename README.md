@@ -8,6 +8,7 @@ A physics-based seesaw simulator built with vanilla JavaScript. Click on the pla
 
 - **Real Physics**: Torque calculations based on weight × distance
 - **Interactive**: Click anywhere on the plank to add weights (1-10 kg)
+- **Visual Feedback**: Object sizes scale with weight (heavier = bigger)
 - **Smooth Animations**: CSS-powered tilt animations
 - **Persistent State**: Saves your seesaw state in localStorage
 - **Responsive**: Works on desktop and mobile

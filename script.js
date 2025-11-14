@@ -83,6 +83,12 @@ class SeesawSimulation {
         element.textContent = `${weightObject.weight}kg`;
         element.title = `${weightObject.weight}kg at ${weightObject.distance.toFixed(0)}px from center`;
 
+        // size based on weight (bigger weights = bigger circles)
+        const size = 28 + (weightObject.weight * 3.2); // 1kg=31px, 10kg=60px
+        element.style.width = `${size}px`;
+        element.style.height = `${size}px`;
+        element.style.fontSize = `${Math.max(0.7, size / 50)}rem`;
+
         this.plank.appendChild(element);
     }
 

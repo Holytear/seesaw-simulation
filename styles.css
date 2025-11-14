@@ -117,15 +117,12 @@ h1 {
 /* Weight Objects */
 .weight-object {
     position: absolute;
-    width: 40px;
-    height: 40px;
     border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
     font-weight: bold;
     color: white;
-    font-size: 0.8rem;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
     border: 2px solid rgba(255, 255, 255, 0.3);
     top: 50%;
@@ -230,12 +227,6 @@ h1 {
 @media (max-width: 500px) {
     .plank {
         width: 300px;
-    }
-
-    .weight-object {
-        width: 30px;
-        height: 30px;
-        font-size: 0.7rem;
     }
 }
 
