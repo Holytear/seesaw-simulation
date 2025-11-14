@@ -1,7 +1,4 @@
-// Seesaw Simulation - Physics Engine
-// Author: Seesaw Case Study
-// Date: November 14, 2025
-
+// Seesaw simulation with physics
 class SeesawSimulation {
     constructor() {
         // DOM Elements
@@ -30,19 +27,14 @@ class SeesawSimulation {
     }
 
     init() {
-        // Load saved state
         this.loadState();
-
-        // Display next weight
         this.updateNextWeightDisplay();
 
-        // Event Listeners
+        // event listeners
         this.plank.addEventListener('click', (e) => this.handlePlankClick(e));
         this.resetBtn.addEventListener('click', () => this.resetSeesaw());
 
-        // Calculate and display initial state
         this.calculateAndUpdate();
-
         this.logEvent('Seesaw initialized. Click on the plank to add weights!');
     }
 
@@ -51,16 +43,13 @@ class SeesawSimulation {
     }
 
     handlePlankClick(e) {
-        // Get click position relative to plank
         const rect = this.plank.getBoundingClientRect();
         const clickX = e.clientX - rect.left;
 
-        // Validate click is within plank bounds
         if (clickX < 0 || clickX > rect.width) {
             return;
         }
 
-        // Create new weight object
         const weight = this.nextWeight;
         const position = (clickX / rect.width) * this.PLANK_WIDTH;
         const distance = Math.abs(position - this.CENTER_X);
@@ -75,23 +64,13 @@ class SeesawSimulation {
             color: this.generateColor()
         };
 
-        // Add to objects array
         this.objects.push(weightObject);
-
-        // Generate next weight
         this.nextWeight = this.generateRandomWeight();
         this.updateNextWeightDisplay();
-
-        // Add visual object to DOM
         this.addWeightObjectToDOM(weightObject);
-
-        // Calculate physics and update display
         this.calculateAndUpdate();
-
-        // Save state
         this.saveState();
 
-        // Log event
         this.logEvent(`🎯 ${weight}kg dropped on ${side} side at ${distance.toFixed(0)}px from center`);
     }
 
@@ -117,14 +96,12 @@ class SeesawSimulation {
     }
 
     calculateAndUpdate() {
-        // Calculate torques for both sides
-        // Torque = Weight × Distance from center
+        // calculate total torque and weight for each side
         let leftTorque = 0;
         let rightTorque = 0;
         let leftWeight = 0;
         let rightWeight = 0;
 
-        // Sum up torques and weights for each side
         this.objects.forEach(obj => {
             const torque = obj.weight * obj.distance;
             if (obj.side === 'left') {
@@ -136,30 +113,23 @@ class SeesawSimulation {
             }
         });
 
-        // Calculate tilt angle based on torque difference
-        // Positive difference = tilts right, negative = tilts left
-        // Clamped to ±30 degrees maximum
+        // calculate angle from torque difference (max 30 degrees)
         const torqueDifference = rightTorque - leftTorque;
         this.currentAngle = Math.max(-this.MAX_ANGLE, Math.min(this.MAX_ANGLE, 
             torqueDifference / this.TORQUE_SENSITIVITY));
 
-        // Update all display elements
+        // update displays
         this.leftWeightDisplay.textContent = `${leftWeight.toFixed(1)} kg`;
         this.rightWeightDisplay.textContent = `${rightWeight.toFixed(1)} kg`;
         this.tiltAngleDisplay.textContent = `${this.currentAngle.toFixed(1)}°`;
 
-        // Apply CSS rotation transform for smooth animation
         this.plank.style.transform = `rotate(${this.currentAngle}deg)`;
 
-        // Update info display
         this.updateInfoDisplay(leftTorque, rightTorque, leftWeight, rightWeight);
     }
 
     updateInfoDisplay(leftTorque, rightTorque, leftWeight, rightWeight) {
-        const info = document.createElement('div');
-        info.className = 'info-tooltip';
-        info.style.display = 'none'; // Hidden by default
-        // Can be used for debugging or additional info display
+        // TODO: maybe add a tooltip or debug panel here later
     }
 
     updateNextWeightDisplay() {
@@ -180,28 +150,20 @@ class SeesawSimulation {
     }
 
     resetSeesaw() {
-        // Clear objects array
         this.objects = [];
 
-        // Remove all weight objects from DOM
+        // remove all weights from DOM
         const weightElements = this.plank.querySelectorAll('.weight-object');
         weightElements.forEach(el => el.remove());
 
-        // Reset angle
         this.currentAngle = 0;
         this.plank.style.transform = 'rotate(0deg)';
-
-        // Generate new next weight
         this.nextWeight = this.generateRandomWeight();
 
-        // Update displays
         this.calculateAndUpdate();
         this.updateNextWeightDisplay();
-
-        // Clear state from localStorage
         this.saveState();
 
-        // Log event
         this.logEvent('🔄 Seesaw reset to initial state');
     }
 
