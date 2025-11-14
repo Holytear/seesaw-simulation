@@ -41,43 +41,57 @@ Creating a physics-based seesaw simulation using pure JavaScript, HTML, and CSS.
 
 #### Task 1: Project Setup
 - ✅ Created development documentation file
-- ⏳ Initialize Git repository
-- ⏳ Create basic project structure
+- ✅ Initialized Git repository
+- ✅ Created basic project structure (HTML, CSS, JS)
+- ✅ Configured Git with user credentials
+- ✅ First commit: Initial project setup
 
 #### Task 2: HTML Structure
-- ⏳ Create index.html with seesaw layout
-- ⏳ Add weight display sections
-- ⏳ Add control buttons
+- ✅ Created index.html with seesaw layout
+- ✅ Added weight display sections (4 cards: left, next, right, angle)
+- ✅ Added control buttons (reset)
+- ✅ Included event log section
 
 #### Task 3: CSS Styling
-- ⏳ Style seesaw plank and pivot
-- ⏳ Style weight objects
-- ⏳ Add tilt animations
-- ⏳ Responsive design
+- ✅ Styled seesaw plank (wood texture with gradients)
+- ✅ Styled pivot (triangle shape)
+- ✅ Styled weight objects (colorful circles)
+- ✅ Added tilt animations (CSS transitions with cubic-bezier)
+- ✅ Implemented responsive design (media queries for mobile)
 
 #### Task 4: JavaScript Physics Engine
-- ⏳ Click detection on plank
-- ⏳ Torque calculation logic
-- ⏳ Angle calculation with constraints
-- ⏳ Object positioning
+- ✅ Implemented click detection on plank (getBoundingClientRect)
+- ✅ Created torque calculation logic (weight × distance)
+- ✅ Added angle calculation with ±30° constraints
+- ✅ Implemented object positioning system
+- ✅ Random weight generation (1-10 kg)
+- ✅ Side determination (left/right of center)
 
 #### Task 5: State Management
-- ⏳ localStorage implementation
-- ⏳ State restore on page load
-- ⏳ State update on changes
+- ✅ Implemented localStorage persistence
+- ✅ State restore on page load (objects, weights, angle)
+- ✅ Automatic state save on every change
+- ✅ JSON serialization for complex data
 
 #### Task 6: Animation System
-- ⏳ Smooth tilt transitions
-- ⏳ Object drop animations
+- ✅ Smooth tilt transitions (0.6s cubic-bezier easing)
+- ✅ Object drop animations (@keyframes dropIn)
+- ✅ Hover effects on plank
+- ✅ Button interaction animations
 
 #### Task 7: Bonus Features
-- ⏳ Reset button functionality
-- ⏳ Weight labels on objects
-- ⏳ Enhanced UI/UX
+- ✅ Reset button functionality (clears all state)
+- ✅ Weight labels on objects (displayed in kg)
+- ✅ Event log system (timestamped actions)
+- ✅ Next weight preview display
+- ✅ Real-time torque calculations
+- ✅ Gradient backgrounds and modern UI
+- ✅ Tooltips on objects
 
 #### Task 8: Documentation & Deployment
-- ⏳ Write comprehensive README
-- ⏳ Prepare for GitHub Pages
+- ✅ Written comprehensive README (features, setup, physics, challenges)
+- ✅ Added technical documentation
+- ⏳ Prepare for GitHub Pages deployment
 - ⏳ Create video demonstration script
 
 ---
