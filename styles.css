@@ -132,6 +132,11 @@ h1 {
     transform: translateY(-50%);
     animation: dropIn 0.3s ease-out;
     cursor: default;
+    transition: transform 0.2s ease;
+}
+
+.weight-object:hover {
+    transform: translateY(-50%) scale(1.1);
 }
 
 @keyframes dropIn {
