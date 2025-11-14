@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seesaw Simulation</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Seesaw Simulation</h1>
+        
+        <!-- Weight Display Section -->
+        <div class="weight-display">
+            <div class="weight-card">
+                <span class="label">LEFT WEIGHT</span>
+                <span class="value" id="leftWeight">0 kg</span>
+            </div>
+            <div class="weight-card">
+                <span class="label">NEXT WEIGHT</span>
+                <span class="value" id="nextWeight">? kg</span>
+            </div>
+            <div class="weight-card">
+                <span class="label">RIGHT WEIGHT</span>
+                <span class="value" id="rightWeight">0 kg</span>
+            </div>
+            <div class="weight-card">
+                <span class="label">TILT ANGLE</span>
+                <span class="value" id="tiltAngle">0°</span>
+            </div>
+        </div>
+
+        <!-- Seesaw Container -->
+        <div class="seesaw-container" id="seesawContainer">
+            <div class="seesaw" id="seesaw">
+                <div class="plank" id="plank">
+                    <!-- Objects will be added here dynamically -->
+                </div>
+                <div class="pivot"></div>
+            </div>
+        </div>
+
+        <!-- Event Log -->
+        <div class="event-log">
+            <div id="eventList"></div>
+        </div>
+
+        <!-- Control Buttons -->
+        <div class="controls">
+            <button id="resetBtn" class="btn btn-reset">🔄 Reset Seesaw</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
